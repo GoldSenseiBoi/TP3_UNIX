@@ -246,7 +246,7 @@ exit 0
 **Explication :** 
 Le script commence par vérifier que tu es bien root avec la variable `$UID` (car seul root peut créer des utilisateurs). Ensuite, il vérifie si deux arguments ont été passés (le nom d'utilisateur et le mot de passe). Si l'utilisateur existe déjà, il te demande de choisir un autre nom. Sinon, il crée l'utilisateur avec `useradd`. Note que pour le mot de passe, on utilise `openssl` pour le chiffrer avant de l'ajouter.
 
-## Exercice : Lecture au clavier
+## Exercice 8 : Lecture au clavier
 
 
 ### Explication :
@@ -302,7 +302,7 @@ fi
 **Explication :**
 Le script vérifie que l'argument est un répertoire. Ensuite, il parcourt chaque fichier du répertoire et utilise la commande `file` pour vérifier s'il s'agit d'un fichier texte. Pour chaque fichier texte, il demande à l'utilisateur s'il veut le visualiser. Si la réponse est "o" (oui), il lance la commande `more` pour afficher le contenu du fichier.
 
-## Exercice 8 : Appréciation
+## Exercice 9 : Appréciation
 
 
 ### Code :
