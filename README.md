@@ -30,6 +30,16 @@ echo "Voici la liste des paramètres : $@"
 **Explication :** 
 Ce script permet de visualiser les informations principales d'un script bash, notamment les arguments qu'on lui passe. C'est super utile pour comprendre ce que l'utilisateur a entré. Par exemple, si tu exécutes le script avec `./mon_script.sh arg1 arg2 arg3`, tu verras les infos comme le nombre de paramètres (3), le nom du script, etc.
 
+Resultat :
+
+```bash
+root@serveur1:~# ./analyse.sh arg1 arg2 arg3
+Bonjour, vous avez rentré 3 paramètres
+Le nom du script est ./analyse.sh
+Le 3ème paramètre est arg3
+Voici la liste des paramètres : arg1 arg2 arg3
+```
+
 ## Exercice 2 : Vérification du nombre de paramètres
 
 **Objectif :** Créer un script qui vérifie que l'utilisateur a bien passé deux arguments. Si c'est le cas, le script les concatène et affiche le résultat, sinon il affiche un message d'erreur.
@@ -52,9 +62,14 @@ fi
 **Explication :** 
 Le script commence par vérifier combien d'arguments ont été passés avec `$#`. Si c'est égal à 2, il va juste concaténer les deux arguments (c'est-à-dire les coller ensemble) et les afficher. Si tu passes, par exemple, `./mon_script.sh bon jour`, il affichera `bonjour`. Si tu passes moins ou plus de deux arguments, il te dira qu'il faut exactement 2 arguments.
 
+Resultat :
+
+```bash
+root@serveur1:~# ./concat.sh bon jour
+bonjour
+```
+
 ## Exercice 3 : Type de fichier et droits d'accès
-
-
 
 ### Code :
 ```bash
@@ -152,7 +167,19 @@ fi
 Le script commence par vérifier que l'utilisateur a passé un seul argument, qui doit être un répertoire. Ensuite, il sépare ce qu'il trouve à l'intérieur :
 - Il liste d'abord les fichiers simples.
 - Ensuite, il liste les sous-répertoires.
-Par exemple, si tu exécutes `./mon_script.sh /mon/repertoire`, il affichera d'abord les fichiers puis les répertoires.
+Par exemple, si tu exécutes `./listdir.sh /mon/repertoire`, il affichera d'abord les fichiers puis les répertoires.
+
+Resultat : 
+
+```bash
+####### fichier dans /mon/repertoire/
+/mon/repertoire/config-3.16.0-4-amd64
+/mon/repertoire/initrd.img-3.16.0-4-amd64
+/mon/repertoire/System.map-3.16.0-4-amd64
+/mon/repertoire/vmlinuz-3.16.0-4-amd64
+####### repertoires dans /mon/repertoire/
+/mon/repertoire/grub
+```
 
 ## Exercice 5 : Lister les utilisateurs
 
@@ -172,7 +199,7 @@ fi
 
 **Explication :** 
 Le script utilise `awk` pour parcourir le fichier `/etc/passwd`. Il va chercher les utilisateurs ayant un UID (User ID) supérieur à 100, ce qui correspond souvent aux utilisateurs normaux (les UID inférieurs à 100 sont souvent des utilisateurs système). Ensuite, il affiche leur nom et leur UID.
-Par exemple, si tu exécutes le script sans argument (`./mon_script.sh`), il affichera tous les utilisateurs qui ont un UID supérieur à 100.
+Par exemple, si tu exécutes le script sans argument (`./listlog.sh`), il affichera tous les utilisateurs qui ont un UID supérieur à 100.
 
 ## Exercice 6 : Mon utilisateur existe-t-il ?
 
@@ -196,7 +223,7 @@ fi
 ```
 
 **Explication :** 
-Le script prend un argument qui peut être un login ou un UID et parcourt le fichier `/etc/passwd` avec `awk`. Si l'argument correspond soit au nom d'utilisateur (`$1`), soit à l'UID (`$3`), il affiche que l'utilisateur existe avec son UID. Par exemple, si tu passes `./mon_script.sh root`, il affichera "Cet utilisateur nommé root existe avec comme UID : 0".
+Le script prend un argument qui peut être un login ou un UID et parcourt le fichier `/etc/passwd` avec `awk`. Si l'argument correspond soit au nom d'utilisateur (`$1`), soit à l'UID (`$3`), il affiche que l'utilisateur existe avec son UID. Par exemple, si tu passes `./searchuser.sh root`, il affichera comme résultat "Cet utilisateur nommé root existe avec comme UID : 0".
 
 ## Exercice 7 : Création d'utilisateur
 
